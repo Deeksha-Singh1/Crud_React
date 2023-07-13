@@ -16,6 +16,12 @@ const Read = () => {
     axios.delete(`https://64b03146c60b8f941af56286.mockapi.io/crudOper/${id}`).then(()=>{getData();});
   }
 
+  const setToLocalStorage = (id, name, email) => {
+    localStorage.setItem("id", id);
+    localStorage.setItem("name", name);
+    localStorage.setItem("email", email);
+  };
+
   useEffect(() => {
     getData();
   }, []);
@@ -42,7 +48,9 @@ const Read = () => {
       <th scope="row">{ele.id}</th>
       <td>{ele.name}</td>
       <td>{ele.email}</td>
-      <td><button className=" btn btn-success">Edit</button></td>
+      <td><Link to={"/update"}><button className=" btn btn-success" onClick={()=>{
+        setToLocalStorage(ele.id,ele.name,ele.email)
+      }}>Edit</button></Link></td>
       <td><button className='btn btn-danger' onClick={()=> handleDelete(ele.id)}>Delete</button></td>
     </tr>
     
