@@ -1,11 +1,16 @@
-
+import {BrowserRouter as Router, Routes,Route} from 'react-router-dom'
 import Create from './components/Create';
 
 function App() {
   return (
-    <div className="App">
-      <Create/>
-    </div>
+    <>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Create/>} />
+      </Routes>
+    </Router>
+      
+    </>
   );
 }
 
